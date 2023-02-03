@@ -16,6 +16,8 @@ Main features:
 * Custom powerful, colored logging library **ezlog** (That uses **colorama**. It helps to enable the colors in Windows command line).
 * Type-hinted as possible. If you use advanced IDE, programming process with this framework will be easy with type-hints!
 
+.. note:: This project is using **Telethon**. :ref:`There you can see it documentation <docs.telethon.dev>`
+
 How I can use it?
 -----------------
 
@@ -77,6 +79,8 @@ And, sorry for my grammar, I'm live in Ukraine :)
     framework/utils
     framework/exceptions
     framework/types
+    framework/common
+    framework/version
     framework/ezlog
     framework/cli
 

@@ -4,6 +4,12 @@ Defines VersionLabel with labels of version and version information
 
 
 class VersionLabel:
+    """Enum with the possible version labels
+
+    :ivar InDevelopment: ``[indev]`` label
+    :ivar Unstable: ``[unstable]`` label
+    """
+
     InDevelopment  = '[indev]'
     Unstable       = '[unstable]'
 
