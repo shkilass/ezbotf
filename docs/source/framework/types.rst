@@ -6,6 +6,9 @@
 types module
 ============
 
+.. note:: This module is imports as ``from .. import types``. This means that you
+     must use ``ezbotf.types.TOMLDict`` as example.
+
 .. automodule:: ezbotf.types
 
     ``TOMLDict = dict[str, Any]``

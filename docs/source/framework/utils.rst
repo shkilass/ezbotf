@@ -9,6 +9,8 @@ utils module
 .. note:: This module is imports as ``from .. import utils``. This means that you
      must use ``ezbotf.utils.check_config`` as example.
 
+.. automodule:: ezbotf.utils
+
 System functions
 ================
 
