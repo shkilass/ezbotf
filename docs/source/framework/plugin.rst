@@ -160,6 +160,8 @@ Plugin
             |- main.py
             |- plugin.toml
 
+        .. seealso:: :func:`ezbotf.utils.install_requirements()` and :func:`ezbotf.utils.check_required_plugins()`
+
     .. automethod:: on_setup
 
         .. note:: Called only once, when plugin is initializing

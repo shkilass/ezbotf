@@ -197,7 +197,8 @@ def install_requirements(plugin: Plugin) -> bool:
 def check_required_plugins_by_list(plugin: Plugin,
                                    plugins: list[Plugin],
                                    required_plugins: REQUIRED_PLUGINS_LIST) -> bool:
-    """Check if the required plugins with the required versions are alive
+    """Check if the required plugins with the required versions are alive.
+    Required plugins gets from plugin config file by path ``requirements.plugins``
 
     :param plugin: Plugin that uses this function
     :param plugins: Current plugins list
@@ -241,7 +242,7 @@ def check_required_plugins_by_list(plugin: Plugin,
 
 def check_required_plugins(plugin: Plugin) -> bool:
     """Checks all required plugins for a :class:`Plugin`.
-    Shorthand for the :func:`check_required_plugins_by_list`.
+    Shorthand for the :func:`check_required_plugins_by_list`
 
     :param plugin: Plugin from get all required configurations to check all required plugins
 
