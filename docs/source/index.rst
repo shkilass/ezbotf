@@ -73,6 +73,7 @@ And, sorry for my grammar, I'm live in Ukraine :)
     framework/permissions
     framework/pluginloader
     framework/argumentparser.rst
+    framework/messages
     framework/utils
     framework/exceptions
     framework/types
