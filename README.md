@@ -222,10 +222,11 @@ Build **HTML** docs via **Make**:
 make html
 ```
 
-
+<!--
 ## **EzBot** - Better Place For Users
 
 **EzBot** - Is an application-overlay of the EzBot Framework for all platforms (including **Android**) with the GUI and some cool features.
 I recommend to use it if you are is user.
 
 At the current moment, this project in the closed development. To get news about it, you can watch [this repo](https://github.com/ftdot/ezbot)
+-->
