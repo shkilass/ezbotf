@@ -74,7 +74,8 @@ And, sorry for my grammar, I'm live in Ukraine :)
     framework/pluginloader
     framework/argumentparser.rst
     framework/utils
-    framework/cli.rst
+    framework/ezlog
+    framework/cli
 
 .. toctree::
     :hidden:
