@@ -4,7 +4,8 @@ All exceptions from the framework
 
 
 class PluginError(Exception):
-    """Class for all the plugins errors
+    """Class for all the plugins errors.
+    If you want to create own error, it must inherit
 
     :ivar plugin_name: Name of the plugin raised exception
     :ivar description: Description of the exception
@@ -23,22 +24,22 @@ class PluginError(Exception):
         return f'Plugin "{self.plugin_name}" ' + self.description
 
 
-class ArgumentTypeCastingError(Exception):
-    """Error for the ArgumentParser's type-casts
-
-    :ivar description: Description of the error
-    """
-
-    def __init__(self, description: str, *args):
-        """
-        :param description: Description of the error
-        """
-        super().__init__(*args)
-
-        self.description = description
-
-    def __str__(self):
-        return self.description
+# class ArgumentTypeCastingError(Exception):
+#     """Error for the ArgumentParser's type-casts
+#
+#     :ivar description: Description of the error
+#     """
+#
+#     def __init__(self, description: str, *args):
+#         """
+#         :param description: Description of the error
+#         """
+#         super().__init__(*args)
+#
+#         self.description = description
+#
+#     def __str__(self):
+#         return self.description
 
 
 class IncorrectInstanceConfigError(Exception):

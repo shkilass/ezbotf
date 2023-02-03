@@ -4,7 +4,6 @@ from .casts import *
 from .argumentparseerror import *
 
 from ..context import Context
-from ..exceptions import ArgumentTypeCastingError
 from .. import ezlog
 
 from ..types import PluginCommand

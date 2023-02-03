@@ -74,6 +74,7 @@ And, sorry for my grammar, I'm live in Ukraine :)
     framework/pluginloader
     framework/argumentparser.rst
     framework/utils
+    framework/exceptions
     framework/types
     framework/ezlog
     framework/cli
