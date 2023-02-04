@@ -32,7 +32,7 @@ Example:
 
     ezbotf instance -h
 
-``-h``, ``--help`` - Shows help message about subcommand.
+``-h``, ``--help`` - Shows help message about this subcommand.
 
 ``-n (NAME)``, ``--new-intance (NAME)`` - Creates new instance in the current environment.
 
@@ -45,17 +45,19 @@ Example:
 
 ``--api-hash (API HASH)`` - Telegram API HASH for **--setup**
 
+.. seealso:: :ref:`firstinstance`
+
 Subcommand: plugin
 ------------------
 
-``-h``, ``--help`` - Shows help message about subcommand.
+``-h``, ``--help`` - Shows help message about this subcommand.
 
-``-i (NAME)``, ``--instance (NAME)`` - Instance with that work.
+``-i (NAME)``, ``--instance (NAME)`` - Instance with that work. Required for all arguments
 
 ``-n (NAME)``, ``--new-plugin (NAME)`` - Creates new plugin.
 
 ``-r (NAME)``, ``--remove-plugin (NAME)`` - Removes the plugin.
 
-``-c (NAME)``, ``--compile-plugin (NAME)`` - Compiles a plugin to .zip (do not forget to backup your code!)
+``-c (NAME)``, ``--compile-plugin (NAME)`` - Compiles the plugin to .zip (do not forget to backup your code!)
 
-``-I (PATH)``, ``--install-plugin (PATH)`` - Installs plugin.
+``-I (PATH)``, ``--install-plugin (PATH)`` - Installs the plugin.
