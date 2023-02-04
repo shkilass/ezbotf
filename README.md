@@ -8,7 +8,7 @@ This is a beautiful userbot framework for messangers that uses plugin system and
 - Argument Parser (You can easily add typed arguments to your command)
 
 Currently, framework in the development. This is may cause some bugs or incorrect work of some functions, grammatical errors, undocumented things and other.
-If you found any of this, describe it [there](/issues). [Also see here](#)
+If you found any of this, describe it [there](/issues).
 
 See more [on the documentation page](#)
 
