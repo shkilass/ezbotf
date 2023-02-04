@@ -1,6 +1,6 @@
 .. _types:
 
-.. currentmodule:: ezbotf
+.. currentmodule:: ezbotf.types
 
 ============
 types module
