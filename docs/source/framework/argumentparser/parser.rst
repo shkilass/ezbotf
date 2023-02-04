@@ -60,6 +60,7 @@ ArgumentParser
             async def lowercase(event, args):
                 if args.rt_text == '<notset>' and args.text == '<notset>':
                     await ezbotf.messages.error(event, 'You must reply to any message or write text as first argument')
+                    return
 
                 text = args.text if args.text != '<notset>' else args.rt_text
 
@@ -84,7 +85,7 @@ ArgumentParser
                 main_command_aliases='text'
             )
 
-            # Because there is lowercase, uppercase is using the same argument scheme, there is created shared variable for arguments
+            # Because lowercase, uppercase is using the same argument scheme, there is created shared arguments list
             shared_text_ops_args = [ezbotf.argumentparser.ReplyToArgument('rt_text', default='<notset>'),
                                     ezbotf.argumentparser.Argument('text', default='<notset>')]
 
@@ -93,6 +94,7 @@ ArgumentParser
             async def text_lowercase(event, args):
                 if args.rt_text == '<notset>' and args.text == '<notset>':
                     await ezbotf.messages.error(event, 'You must reply to any message or write text as first argument')
+                    return
 
                 text = args.text if args.text != '<notset>' else args.rt_text
 
@@ -103,6 +105,7 @@ ArgumentParser
             async def text_lowercase(event, args):
                 if args.rt_text == '<notset>' and args.text == '<notset>':
                     await ezbotf.messages.error(event, 'You must reply to any message or write text as first argument')
+                    return
 
                 text = args.text if args.text != '<notset>' else args.rt_text
 
