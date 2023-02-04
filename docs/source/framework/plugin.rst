@@ -25,7 +25,7 @@ There is example of a standalone plugin:
     def on_load():
 
         @plugin.command('example')
-        def example(event, args):
+        async def example(event, args):
             await ezbotf.messages.info(event, 'This is an example')
 
 .. note:: You must follow **plugin developing guide**, check :ref:`Quick start <plugindev-quickstart>`
