@@ -4,8 +4,8 @@ EzBot Framework Documentation
 =============================
 
 Framework is designed to easily extend functional of messengers. On current moment,
-Telegram is main messenger, that framework is support. Framework have plugin system,
-easy instance management by environments.
+Telegram is main messenger, that framework is support. Framework have plugin system
+and easy instance management by environments.
 
 Main features
 -------------
@@ -41,13 +41,13 @@ functional. See **CLI Reference**
 History
 -------
 
-First implementation of framework idea it was my project **fTUB**, that has been provided
-functional of the **anti-deleting**. But, there wasn't easy plugin system, and all code has
-been bad structure. After, I created a **EasyTl** project. This is have a public archive on
-my github. After, I closed this project and created this framework for all users of any type.
-In this framework I used some features from **EasyTl** and I'm planning to create old functional,
-but as plugins. Is: **anti-deleting**, **animations**, **searching from telegram**, and other.
-There plugins I will publish on my github and everyone can be use this.
+First implementation of framework idea it was my project **fTUB**, that provided functional 
+of the **anti-deleting**. But, there wasn't easy plugin system, and all code had bad structure.
+After, I created a **EasyTl** project. This is have a public archive on my github. After, I
+closed this project and created this framework for all users of any type. In this framework I 
+used some features from **EasyTl** and I'm planning to create old functional, but as plugins. 
+Is: **anti-deleting**, **animations**, **searching from telegram**, and other. There plugins 
+I will publish on my github and everyone can be use this.
 
 .. note:: And, sorry for my grammar. You can open issue there: https://github.com/ftdot/ezbotf/issues,
 if you found any grammar error. Don't forget for the **grammar** label
