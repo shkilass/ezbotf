@@ -338,6 +338,8 @@ class ArgumentParser:
             output_args.STACK = []
 
             for arg, targ in zip([None]*len(self.arguments) + [0]*self.stack_arguments, temp_args):
+            
+                # skip argument if it is positional\default
                 if arg is None:
                     continue
 
