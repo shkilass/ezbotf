@@ -1,6 +1,6 @@
 .. _common:
 
-.. currentmodule:: ezbotf.common
+.. currentmodule:: ezbotf
 
 =============
 common module
