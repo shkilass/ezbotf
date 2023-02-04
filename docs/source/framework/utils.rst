@@ -27,7 +27,7 @@ These utility functions is created for framework base.
 Requirement management functions
 ================================
 
-This usable for the plugins ``on_install`` event. These functions that implements functiona of
+This usable for the plugins ``on_install`` event. These functions that implements functional of
 of installing requirements and checking required plugins.
 
 .. seealso:: :func:`ezbotf.Plugin.on_install()` - Example with utilities usage
