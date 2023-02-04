@@ -16,7 +16,7 @@ Main features:
 * Custom powerful, colored logging library **ezlog** (That uses **colorama**. It helps to enable the colors in Windows command line).
 * Type-hinted as possible. If you use advanced IDE, programming process with this framework will be easy with type-hints!
 
-.. note:: This project is using **Telethon**. :ref:`There you can see it documentation <docs.telethon.dev>`
+.. note:: This project is using **Telethon**. There you can see it documentation: https://docs.telethon.dev/
 
 How I can use it?
 -----------------
@@ -48,7 +48,16 @@ In this framework I used some features from **EasyTl** and I'm planning to creat
 but as plugins. Is: **anti-deleting**, **animations**, **searching from telegram**, and other.
 There plugins I will publish on my github and everyone can be use this.
 
-And, sorry for my grammar, I'm live in Ukraine :)
+.. note:: And, sorry for my grammar. You can open issue there: https://github.com/ftdot/ezbotf/issues,
+if you found any grammar error. Don't forget for the **grammar** label
+
+.. toctree::
+    :hidden:
+    :caption: First steps
+
+    firststeps/userinstall
+    firststeps/contrinstall
+    firststeps/firstinstance
 
 .. toctree::
     :hidden:
