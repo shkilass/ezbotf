@@ -17,6 +17,7 @@ class PluginError(Exception):
         :param description: Description of the error
         """
         super().__init__(*args)
+
         self.plugin_name  = plugin_name
         self.description  = description
 
