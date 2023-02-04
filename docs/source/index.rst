@@ -7,14 +7,15 @@ Framework is designed to easily extend functional of messengers. On current mome
 Telegram is main messenger, that framework is support. Framework have plugin system,
 easy instance management by environments.
 
-Main features:
+Main features
+-------------
 
-* Powered by **Telethon**, powerful, MTProto, high-level library to interact with **Telegram**.
-* Have plugin system, that allows to dynamically add, remove, create and etc. required functions, commands and other.
-* Uses environments and instances systems. It allows you to add multiple users to one environment.
-* Have powerful, easy in use **Argument Parser**. That have `subcommands`, `type-casting` (including ``list``, ``dict`` types) and more other features.
-* Custom powerful, colored logging library **ezlog** (That uses **colorama**. It helps to enable the colors in Windows command line).
-* Type-hinted as possible. If you use advanced IDE, programming process with this framework will be easy with type-hints!
+#. Powered by **Telethon**, powerful, MTProto, high-level library to interact with **Telegram**.
+#. Have plugin system, that allows to dynamically add, remove, create and etc. required functions, commands and other.
+#. Uses environments and instances systems. It allows you to add multiple users to one environment.
+#. Have powerful, easy in use **Argument Parser**. That have `subcommands`, `type-casting` (including ``list``, ``dict`` types) and more other features.
+#. Custom powerful, colored logging library **ezlog** (That uses **colorama**. It helps to enable the colors in Windows command line).
+#. Type-hinted as possible. If you use advanced IDE, programming process with this framework will be easy with type-hints!
 
 .. note:: This project is using **Telethon**. There you can see it documentation: https://docs.telethon.dev/
 
@@ -71,6 +72,13 @@ if you found any grammar error. Don't forget for the **grammar** label
 
     configurations/instance-configuration
     configurations/translations
+
+.. toctree::
+    :hidden:
+    :caption: CLI Reference
+
+    clireference/about
+    clireference/reference
 
 .. toctree::
     :hidden:
