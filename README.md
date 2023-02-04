@@ -1,15 +1,16 @@
 
 # EzBot Framework (**In the development**)
 
-This is a beautiful Telegram userbot framework that uses plugin system and have cool features, such as:
+This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
 - Translations (You can easily translate framework\plugins to any language by using TOML documents)
 - Commands (You can create any command that can be called with prefixes)
+- Argument Parser (You can easily add typed arguments to your command)
 
 Currently, framework in the development. This is may cause some bugs or incorrect work of some functions, grammatical errors, undocumented things and other.
 If you found any of this, describe it [there](/issues). [Also see here](#)
 
-Powered by Telethon & Python
+See more [on the documentation page](#)
 
 
 ## Contents
@@ -33,7 +34,9 @@ Powered by Telethon & Python
 - [Documentation](#documentation)
 - - [Build Documentation](#build-documentation)
 
-- [EzBot - Better Place For Users](#ezbot---better-place-for-users)
+<!--
+- [EzzBot - Better Place For Users](#ezzbot---better-place-for-users)
+-->
 
 
 ## User Installation
@@ -223,9 +226,9 @@ make html
 ```
 
 <!--
-## **EzBot** - Better Place For Users
+## **EzzBot** - Better Place For Users
 
-**EzBot** - Is an application-overlay of the EzBot Framework for all platforms (including **Android**) with the GUI and some cool features.
+**EzzBot** - Is an application-overlay of the EzBot Framework for all platforms (including **Android**) with the GUI and some cool features.
 I recommend to use it if you are is user.
 
 At the current moment, this project in the closed development. To get news about it, you can watch [this repo](https://github.com/ftdot/ezbot)
