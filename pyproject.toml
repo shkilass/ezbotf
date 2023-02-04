@@ -1,3 +1,38 @@
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "ezbotf"
+version = "1.0.0"
+description = "Create own plugins for Telegram through this framework"
+readme = "README.md"
+authors = [{ name = "ftdot", email = "ftdoot@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "Environment :: Plugins",
+    "Framework :: Sphinx",
+    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Communications :: Chat",
+    "Topic :: Documentation :: Sphinx",
+
+]
+keywords = ["telegram", "framework", "plugins", "easy"]
+dependencies = [
+    "telethon",
+    "colorama ~= 0.4.6",
+    "tomlkit ~= 0.11.6",
+    "nest_asyncio",
+    "verlib",
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+docs = ["sphinx", "sphinx_rtd_theme"]
+
+[project.urls]
+Homepage = "https://github.com/ftdot/ezbotf"
