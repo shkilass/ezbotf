@@ -54,7 +54,12 @@ Examples: ``en.toml``, ``uk.toml``, ``pl.toml``
 Contributing
 ------------
 
-If you want to provide your translation into framework, then go to
-https://github.com/ftdot/ezbotf/issues page, and write an message with `translation` label.
+.. note:: All translations of the framework stores in ``ezbotf/env_default/lang/``.
+
+If you want to provide your translation into framework, then:
+
+#. Fork EzBotF repository.
+#. Commit your changes (as example, add Ukrainian translation).
+#. Create pull request and summary of your changes.
 
 Good luck!
