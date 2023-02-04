@@ -23,7 +23,7 @@ Run this:
 After, if no one error while installation has raised, then you can sleep calmly.
 If any error has been raised, open an issue there: https://github.com/ftdot/ezbotf
 with labels: **installation**, **help wanted**. After, describe your problem. Also,
-For more comfort, you can add your python version, OS type & version.
+for more comfort, you can add your python version, OS type & version.
 
 Manual installation
 -------------------
