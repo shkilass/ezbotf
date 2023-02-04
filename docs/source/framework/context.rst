@@ -24,7 +24,7 @@ members by usage a :func:`repr()` function. Example is bottom.
 .. code-block:: python
 
     ...
-    plugin.logger.debug(plugin.context)
+    plugin.logger.debug(repr(plugin.context))
     ...
 
 It will print something that:
