@@ -199,7 +199,7 @@ ezbotf plugin -i (INSTANCE NAME) -r (NAME OF PLUGIN)
 
 ## Documentation
 
-(There may be link to the documentation)
+(There must be link to the documentation)
 
 
 #### Build Documentation
