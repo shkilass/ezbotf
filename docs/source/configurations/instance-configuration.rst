@@ -5,7 +5,7 @@ Instance configuration
 ======================
 
 Instance configuration is a file, that defines all required configurations, such as
-directory to the plugin, logging level, instance name, and other.
+directory to the plugin, logging level, instance name and other.
 
 Example configuration
 ---------------------
@@ -219,8 +219,8 @@ Otherwise, if it is ``false`` value, **EzBot Framework** will send callback abou
 ``[warnings] ignore_plugin_errors`` (*bool*) field
 --------------------------------------------------
 
-If it is ``true`` value, when **EzBot Framework** ignores plugin exceptions. Otherwise, if it is
-``false`` value, **EzBot Framework** will send notifies about plugin exceptions.
+If it is ``true`` value, when **EzBot Framework** ignores plugin exceptions. Otherwise, if it 
+is ``false`` value, **EzBot Framework** will send notifies about plugin exceptions.
 
 ``[warnings] ignore_disallow_access`` (*bool*) field
 ----------------------------------------------------
