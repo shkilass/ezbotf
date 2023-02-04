@@ -8,6 +8,7 @@ ezbotf/argumentparser/__pycache__/
 ezbotf.egg-info/
 ezbotf/ezbotf.egg-info/
 build/
+dist/
 
 # docs builded files
 docs/build/*
