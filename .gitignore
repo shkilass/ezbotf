@@ -1,0 +1,14 @@
+
+# python cache
+__pycache__/
+ezbotf/__pycache__/
+ezbotf/argumentparser/__pycache__/
+
+# pip other files
+ezbotf.egg-info/
+ezbotf/ezbotf.egg-info/
+build/
+
+# docs builded files
+docs/build/*
+!docs/build/.gitkeep
