@@ -81,3 +81,11 @@ class Translator:
 
         if not self.load_language(self.desired_lang):
             self.load_language(self.default_lang)
+
+    ####
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return reprutil.get_repr(self)

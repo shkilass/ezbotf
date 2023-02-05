@@ -17,7 +17,7 @@ from telethon.events.raw import EventBuilder
 
 from datetime import datetime
 
-from . import ezlog, utils, messages, version
+from . import ezlog, utils, messages, version, reprutil
 from .argumentparser import ArgumentParseError
 from .pluginloader import PluginLoader
 from .instancecontext import InstanceContext, DirsContext
@@ -282,3 +282,11 @@ class BotInstance:
 
                 case ArgumentParseError.PluginError:
                     await event.respond(self.translator.translations['argumentparser']['plugin_error'])
+
+    ####
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return reprutil.get_repr(self)

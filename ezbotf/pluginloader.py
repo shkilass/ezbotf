@@ -355,3 +355,11 @@ class PluginLoader:
             return
 
         return command
+
+    ####
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return reprutil.get_repr(self)
