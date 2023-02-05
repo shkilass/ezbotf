@@ -1,12 +1,13 @@
 
 <p align="center">
-  <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" heigth="256" />
+  <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" height="256" />
 </p>
 
 # EzBot Framework (**In the development**)
 
 [![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
 [![Issues](https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/issues)
+[![Latest tag](https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/tags)
 
 This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
