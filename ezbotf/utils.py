@@ -397,6 +397,9 @@ def have_permissions(user_id: int,
     if user_id not in permissions:
         return Permissions.Any in command_permissions
 
+    if Permissions.Blacklisted in permissions[user_id]:
+        return False
+
     if Permissions.Owner in permissions[user_id]:
         return True
 
