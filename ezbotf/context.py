@@ -4,7 +4,6 @@ and other framework elements.
 """
 
 from . import reprutil
-#from reprlib import recursive_repr
 
 __all__ = ['Context']
 
@@ -18,7 +17,6 @@ class Context:
     def __str__(self):
         return self.__repr__()
 
-    #@recursive_repr()
     def __repr__(self):
         return reprutil.get_repr(self)
 
