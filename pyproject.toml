@@ -32,7 +32,7 @@ dependencies = [
 requires-python = ">=3.10"
 
 [project.optional-dependencies]
-docs = ["sphinx", "sphinx_rtd_theme"]
+docs = ["sphinx", "furo"]
 
 [project.urls]
 Homepage = "https://github.com/ftdot/ezbotf"
