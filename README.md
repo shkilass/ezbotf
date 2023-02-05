@@ -8,7 +8,7 @@
 [![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
 [![Issues](https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/issues)
 [![Latest tag](https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/tags)
-[![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](https://pypi.org/project/ezbotf/)
+[![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](https://pypi.org/project/ezbotf)
 
 This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
@@ -19,7 +19,7 @@ This is a beautiful userbot framework for messangers that uses plugin system and
 Currently, framework in the development. This is may cause some bugs or incorrect work of some functions, grammatical errors, undocumented things and other.
 If you found any of this, describe it [there](https://github.com/ftdot/ezbotf/issues).
 
-See more [on the documentation page](#)
+See more [on the documentation page](https://ezbot-framework.readthedocs.io)
 
 
 ## Contents
@@ -208,7 +208,7 @@ ezbotf plugin -i (INSTANCE NAME) -r (NAME OF PLUGIN)
 
 ## Documentation
 
-(There must be link to the documentation)
+You can check documentation [there](https://ezbot-framework.readthedocs.io). Or build it manually by guide below.
 
 
 #### Build Documentation
