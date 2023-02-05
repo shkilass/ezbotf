@@ -379,7 +379,7 @@ def save_permissions(permissions_dir: pathlib.Path, name: str, permissions: Perm
     (permissions_dir / f'{name}.toml').write_text(tomlkit.dumps(permissions), encoding='utf8')
 
 
-def have_permissions(user_id: int,
+def have_permissions(user_id: str,
                      permissions: PermissionsDict,
                      required_permissions: PermissionsList) -> bool:
     """Checks if the user (by id) have some permissions

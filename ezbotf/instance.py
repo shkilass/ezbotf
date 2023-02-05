@@ -181,9 +181,9 @@ class BotInstance:
             self.logger.critical('User isn\'t authorized! Can\'t continue, exiting...')
             exit()
 
-        # get id of instance owner
-        self.context.owner                       = utils.run_coroutine_without_await(self.client.get_me())
-        self.permissions[self.context.owner.id]  = [Permissions.Owner]
+        # get id of the instance owner
+        self.context.owner                            = utils.run_coroutine_without_await(self.client.get_me())
+        self.permissions[str(self.context.owner.id)]  = [Permissions.Owner]
 
     def run(self):
         """Runs an instance"""
@@ -249,7 +249,7 @@ class BotInstance:
             return
 
         # check permissions
-        if not utils.have_permissions((sender := await event.get_sender()).id, self.permissions, command.permissions):
+        if not utils.have_permissions(str((sender := await event.get_sender()).id), self.permissions, command.permissions):
             self.logger.warning('Attempted to run command: {} by @{} (access disallowed)', event.text, sender.username)
 
             if not self.config['warnings']['ignore_disallow_access']:

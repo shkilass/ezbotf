@@ -15,7 +15,7 @@ __all__ = ['TOMLDict', 'PermissionsList', 'PermissionsDict', 'VersionSpecific', 
 TOMLDict = dict[str, Any]
 
 PermissionsList  = list[str | Permissions]
-PermissionsDict  = dict[int, PermissionsList]
+PermissionsDict  = dict[str, PermissionsList]
 
 VersionSpecific  = list[str, str, str]
 
