@@ -50,7 +50,7 @@ Is: **anti-deleting**, **animations**, **searching from telegram**, and other. T
 I will publish on my github and everyone can be use this.
 
 .. note:: And, sorry for my grammar. You can open issue there: https://github.com/ftdot/ezbotf/issues,
-if you found any grammar error. Don't forget for the **grammar** label
+    if you found any grammar error. Don't forget for the **grammar** label
 
 .. toctree::
     :hidden:
@@ -98,6 +98,7 @@ if you found any grammar error. Don't forget for the **grammar** label
     framework/types
     framework/common
     framework/version
+    framework/reprutil
     framework/ezlog
     framework/cli
 

@@ -3,6 +3,9 @@ Defines :class:`Context` class that helps to store variables and transfer it bet
 and other framework elements.
 """
 
+from . import reprutil
+#from reprlib import recursive_repr
+
 __all__ = ['Context']
 
 
@@ -15,8 +18,9 @@ class Context:
     def __str__(self):
         return self.__repr__()
 
+    #@recursive_repr()
     def __repr__(self):
-        return f'Context({" ".join([f"{attr}={repr(getattr(self, attr))}" for attr in dir(self) if not attr.startswith("__")])})'
+        return reprutil.get_repr(self)
 
     def has_value(self, value_name: str):
         """Checks, if value is have in this context

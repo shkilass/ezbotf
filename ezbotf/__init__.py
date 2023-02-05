@@ -9,4 +9,4 @@ from .instancecontext import *
 from .translator import *
 from .instance import *
 from .permissions import *
-from . import argumentparser, common, exceptions, ezlog, messages, types, utils, version
+from . import argumentparser, common, exceptions, ezlog, messages, types, utils, version, reprutil
