@@ -1,5 +1,5 @@
-telethon ~= 1.26.1
+telethon
 colorama ~= 0.4.6
 tomlkit ~= 0.11.6
-nest_asyncio ~= 1.5.6
-verlib ~= 0.1
+nest_asyncio
+verlib

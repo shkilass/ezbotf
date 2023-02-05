@@ -1,5 +1,14 @@
 
+<p align="center">
+  <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" />
+</p>
+
 # EzBot Framework (**In the development**)
+
+[![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
+[![Issues](https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/issues)
+[![Latest tag](https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/tags)
+[![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](https://pypi.org/project/ezbotf/)
 
 This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
@@ -8,7 +17,7 @@ This is a beautiful userbot framework for messangers that uses plugin system and
 - Argument Parser (You can easily add typed arguments to your command)
 
 Currently, framework in the development. This is may cause some bugs or incorrect work of some functions, grammatical errors, undocumented things and other.
-If you found any of this, describe it [there](/issues). [Also see here](#)
+If you found any of this, describe it [there](https://github.com/ftdot/ezbotf/issues).
 
 See more [on the documentation page](#)
 
