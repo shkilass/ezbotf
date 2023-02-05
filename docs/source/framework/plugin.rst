@@ -19,7 +19,7 @@ There is example of a standalone plugin:
 
     import ezbotf
 
-    plugin = Plugin(PluginType.Standalone)
+    plugin = ezbotf.Plugin(ezbotf.PluginType.Standalone)
 
     @plugin.on_load
     def on_load():
