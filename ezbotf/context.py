@@ -17,3 +17,13 @@ class Context:
 
     def __repr__(self):
         return f'Context({" ".join([f"{attr}={repr(getattr(self, attr))}" for attr in dir(self) if not attr.startswith("__")])})'
+
+    def has_value(self, value_name: str):
+        """Checks, if value is have in this context
+
+        :param value_name: String name of value to check
+
+        :returns: True if value have in current context, otherwise False
+        """
+
+        return value_name in dir(self)
