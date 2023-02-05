@@ -29,10 +29,10 @@ To get documentation of the framework, check **Framework Reference**.
 
 .. To get documentation how to develop plugins, check **Plugin Developing**.
 
-Good luck!
-
 If you are an **User**, you can use it framework to install plugins and extend your messanger
 functional. See **CLI Reference**
+
+Good luck!
 
 .. Will be uncommented, when EzBot will be released
     .. tip:: There have a high-level, GUI manager for this framework - **EzBot**. `Currently,
