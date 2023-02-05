@@ -198,7 +198,7 @@ def check_required_plugins_by_list(plugin: Plugin,
                                    plugins: list[Plugin],
                                    required_plugins: REQUIRED_PLUGINS_LIST) -> bool:
     """Check if the required plugins with the required versions are alive.
-    Required plugins gets from plugin config file by path ``requirements.plugins``
+    Required plugins gets by path ``requirements.plugins`` from plugin config file
 
     :param plugin: Plugin that uses this function
     :param plugins: Current plugins list
@@ -207,7 +207,7 @@ def check_required_plugins_by_list(plugin: Plugin,
     :returns: True if all checks are passed, otherwise False
     """
 
-    plugins_dict_by_names = {p.name: p for p in plugins}
+    plugins_dict_by_names = {p.config['name']: p for p in plugins}
 
     for r in required_plugins:
         checks_count = len([None for e in r if isinstance(e, list)])
@@ -215,26 +215,23 @@ def check_required_plugins_by_list(plugin: Plugin,
         # check count of checks count (allow only 2)
         if checks_count == 0 or checks_count > 2:
             plugin.logger.critical('UTILS: Incorrect count of version checks')
-            plugin.fail()
             return False
 
         # check if required plugin in the dict
         if r[0] not in plugins_dict_by_names:
-            plugin.logger.error('UTILS: Missing plugin {}', r[0])
-            plugin.fail()
+            plugin.logger.error('{} Missing plugin {}', 'UTILS:', r[0])
             return False
 
         # get plugin
         p = plugins_dict_by_names[r[0]]
 
-        checks = [compare_versions([p.config['version']] + r[1])]
+        checks = [compare_versions([p.config['version']] + r[1], plugin.logger)]
 
         if checks_count == 2:
             checks.append(compare_versions([p.config['version']] + r[2]))
 
         if not all(checks):
-            plugin.logger.error('UTILS: This plugin is incompatible with plugin {}', r[0])
-            plugin.fail()
+            plugin.logger.error('{} This plugin is incompatible with plugin {}', 'UTILS:', r[0])
             return False
 
     return True
@@ -269,7 +266,7 @@ def run_coroutine_without_await(coroutine: Coroutine) -> Any:
 
 ####
 
-allowed_operations = '<>!='
+allowed_operations = ['>', '<', '>=', '<=', '==', '!=']
 
 
 def compare_versions(operation: VersionSpecific, logger: ezlog.Logger) -> bool:
