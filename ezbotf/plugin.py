@@ -274,9 +274,9 @@ class Plugin:
 
         # initialize permissions
         if permissions is None:
-            permissions = [Permissions.User, f'{self.config["name"]}.{function.__name__}']
+            permissions = [Permissions.User, ]
 
-        function.permissions  = permissions
+        function.permissions  = permissions + [f'{self.config["name"]}.{function.__name__}']
         function.parser       = arguments
         function.plugin       = self
 
