@@ -8,6 +8,7 @@
 [![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
 [![Issues](https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/issues)
 [![Latest tag](https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/tags)
+[![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](https://pypi.org/project/ezbotf/)
 
 This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
