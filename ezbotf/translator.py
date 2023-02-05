@@ -60,7 +60,7 @@ class Translator:
             self.logger.debug('Path doesn\'t exists. Can\'t load the translations')
             return False
 
-        self.translations = tomlkit.loads(path.read_text())
+        self.translations = tomlkit.loads(path.read_text(encoding='utf8'))
 
         return True
 

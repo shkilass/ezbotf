@@ -1,6 +1,6 @@
 
 name      = 'DefaultInstance'
-prefixes  = ['ez', 'easy', 'изи', 'ізі']
+prefixes  = ['ez']
 language  = 'en'
 
 api_id    = -1

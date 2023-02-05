@@ -65,11 +65,14 @@ class BotInstance:
 
         self.logger: ezlog.Logger | None           = None
         self.main_group: ezlog.LoggerGroup | None  = None
+
         self.pluginloader: PluginLoader | None     = None
         self.context: InstanceContext | None       = None
         self.client: TelegramClient | None         = None
         self.translator: Translator | None         = None
         self.permissions: PermissionsDict | None   = None
+
+        self.prefixes: list[str] = []
 
     def import_config(self, path: pathlib.Path):
         """Imports a TOML config from path to instance
@@ -79,7 +82,7 @@ class BotInstance:
         :raises IncorrectInstanceConfigError: When config is not have required parameters
         """
 
-        self.config = tomlkit.loads(path.read_text())
+        self.config = tomlkit.loads(path.read_text(encoding='utf8'))
 
         if not utils.check_config(self.config, REQUIRED_DEFAULT) or not utils.check_config_by_path(self.config, REQUIRED_CONFIG):
             print(f'ezbotf: Required values as default: {", ".join(REQUIRED_DEFAULT)}')
@@ -133,12 +136,16 @@ class BotInstance:
         self.logger        = ezlog.Logger('BotInstance', group=self.main_group)
         self.pluginloader  = PluginLoader(self.context.dirs.plugins_dir, self.config['language'])
         self.client        = TelegramClient(self.config['name'], self.config['api_id'], self.config['api_hash'])
-        self.translator    = Translator(self.context.dirs.lang_dir, self.main_group)
-        self.permissions   = {}
+        self.translator    = Translator(self.context.dirs.lang_dir, self.main_group, desired_lang=self.config['language'])
+        self.permissions   = utils.load_permissions(self.context.dirs.permissions_dir,
+                                                    self.config['name'])
 
-        # load permissions
-        self.permissions = utils.load_permissions(self.context.dirs.permissions_dir,
-                                                  self.config['name'])
+        # add prefixes from translation
+        if 'prefixes' in self.translator.translations:
+            self.prefixes += self.translator.translations['prefixes']
+
+        # add prefixes from config
+        self.prefixes += self.config['prefixes']
 
         # initialize the PluginLoader and initialize plugins
         self.pluginloader.initialize(self.main_group, self.context)
@@ -183,11 +190,13 @@ class BotInstance:
 
         self.pluginloader.start_plugins()
 
+        # print information about current user
         self.logger.info('{} by user @{}, {} {} [{}]', 'Instance is running',
                          self.context.owner.username,
                          self.context.owner.first_name,
                          self.context.owner.last_name or 'Hasn\'t last name',
                          utils.mask_phone_number(self.context.owner.phone))
+
         self.client.run_until_disconnected()
 
     ####
@@ -219,7 +228,7 @@ class BotInstance:
             return
 
         # check for the prefixes
-        if not any([p in args[0] for p in self.config['prefixes']]):
+        if not any([p in args[0] for p in self.prefixes]):
             return
 
         # check for the notifies
