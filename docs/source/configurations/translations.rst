@@ -29,17 +29,21 @@ How to start translate?
 
 Just copy the file ``en.toml`` in ``lang`` directory and name it as described bottom.
 
-After, you can replace English strings (insert the ``'`` characters) to translated text.
+After, you can replace English strings (insert into the ``'`` characters) to the translated text.
 
 Where is strings?:
 
 .. code-block::
 
-    instance.nonexistent_command  = 'Command isn\'t exists!'
-    ---------------------------------^^^^^^^^^^^^^^^^^^^^^^-
+    instance.nonexistent_command  = "Command isn't exists!"
+    ---------------------------------^^^^^^^^^^^^^^^^^^^^^-
 
-.. note:: If your translation contains character ``'``, you must place ``\`` before it.
-    Such as ``\'``.
+If your translated text contains ``'``, replace ``'`` to ``"``, example:
+
+.. code-block::
+
+    instance.nonexistent_command  = "Command isn't exists!"
+    --------------------------------^---------------------^
 
 How to name a translation file?
 -------------------------------
@@ -50,6 +54,26 @@ Check Wikipedia to get a list of available languages and codes: https://wikipedi
 Also, because translation file is ``TOML`` document, you must add ``.toml`` to your file.
 
 Examples: ``en.toml``, ``uk.toml``, ``pl.toml``
+
+How set instance to other language?
+-----------------------------------
+
+If your environment open folder names as ``instances/``. Open instance you required to edit.
+As example - ``default.toml`` is ``default`` instance.
+
+After you open your instance, replace these string:
+
+.. code-block:: toml
+
+    ...
+    language  = 'en'
+    -------------^^-
+    ...
+
+With language you want. But, this language must be exists in ``lang/`` directory of your environment!
+As default, these is only ``en`` (English) translation.
+
+.. seealso:: Codes of languages in **ISO 639-1** format: https://wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 Contributing
 ------------

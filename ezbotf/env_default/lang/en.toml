@@ -3,7 +3,7 @@
 prefixes = ['easy']
 
 # Translations of the ezbotf Instance
-instance.nonexistent_command  = 'Command isn\'t exists!'
+instance.nonexistent_command  = "Command isn't exists!"
 instance.disallow_access      = 'You have not access to this command!'
 
 # Translations of the ezbotf ArgumentParser
