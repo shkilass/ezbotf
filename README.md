@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" height="256" />
+  <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" />
 </p>
 
 # EzBot Framework (**In the development**)
