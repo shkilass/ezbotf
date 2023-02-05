@@ -3,6 +3,7 @@
 class Permissions:
     """Permission levels for the users & commands
 
+    :ivar Blacklisted: Permissions for blacklisted users. This permission isn't usable, only for blacklist
     :ivar Any: Permissions for any user (including users, that doesn't have no one permission)
     :ivar User: Permission for User level
     :ivar AdvUser: Permission for Advanced User level
@@ -12,6 +13,7 @@ class Permissions:
     :ivar Owner: Permission for Owner level. It recommended to use, if command is changing some framework options
     """
 
+    Blacklisted  = -2
     Any          = -1
     User         = 0
     AdvUser      = 1
