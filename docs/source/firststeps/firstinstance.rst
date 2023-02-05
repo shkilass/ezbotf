@@ -35,8 +35,8 @@ To create instance, stay in environment folder and type command:
     ezbotf instance -n <instance name>
 
 .. note:: Replace **<instance name>** with your instance name. As example, you can name it
-with your account name. You can use **default** instance. It is already exists, you not
-required to create it. But, set up instances to work with them!
+    with your account name. You can use **default** instance. It is already exists, you not
+    required to create it. But, set up instances to work with them!
 
 Set up your instance
 --------------------
