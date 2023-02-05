@@ -273,18 +273,36 @@ class ArgumentParser:
             # parse the stringuity
             temp_args = self._cached_check(input_str)
 
+        # compare the positional arguments
+        if len(temp_args) < self.position_arguments:
+            self.logger.debug('Too little arguments')
+            return ArgumentParseError.TooLittleArguments
+
+        # compare the arguments sum length
+        if len(temp_args) > self.position_arguments + self.default_arguments + self.stack_arguments:
+            self.logger.debug('Too much arguments')
+            return ArgumentParseError.TooManyArguments
+
+        # initialize the default arguments
+        for arg in self.arguments:
+            if arg.default:
+                setattr(output_args, arg.arg_name, arg.default)
+
         # check for the reply-to argument
         if len(self.arguments) > 0 and isinstance(self.arguments[0], ReplyToArgument):
             arg = self.arguments[0]
 
             # check if message has reply-to
             if event.reply_to:
+
                 # find reply-to message
                 msg = [msg async for msg in
                        self.parent_plugin.context.instance.client.iter_messages(event.chat_id, RT_ITER_NUM)
                        if msg.id == event.reply_to.reply_to_msg_id]
+
                 if len(msg) == 0:
                     return ArgumentParseError.CantFindOriginalMessage
+
                 msg = msg[0]
 
                 # type-cast the argument
@@ -303,21 +321,6 @@ class ArgumentParser:
             else:
                 if arg.default is None:
                     return ArgumentParseError.ReplyToRequired
-
-        # compare the positional arguments
-        if len(temp_args) < self.position_arguments:
-            self.logger.debug('Too little arguments')
-            return ArgumentParseError.TooLittleArguments
-
-        # compare the arguments sum length
-        if len(temp_args) > self.position_arguments + self.default_arguments + self.stack_arguments:
-            self.logger.debug('Too much arguments')
-            return ArgumentParseError.TooManyArguments
-
-        # initialize the default arguments
-        for arg in self.arguments:
-            if arg.default:
-                setattr(output_args, arg.arg_name, arg.default)
 
         # type-cast & define the arguments
         for arg, targ in zip(self.arguments, temp_args):
