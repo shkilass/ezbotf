@@ -81,7 +81,7 @@ def run_instance(name: str):
         return
 
     # runs instance
-    instance.fast_run()
+    instance.quick_run()
 
 
 ####
