@@ -118,9 +118,9 @@ def load_runtime_config(plugin: Plugin) -> TOMLDict:
                 plugin.context.notifies.append(f'Config of the plugin "{plugin.config["name"]}" updated')
 
                 # update working config
-                config_to_save = tomlkit.loads(default_path.read_text())
-                config_to_save.update(tomlkit.loads(working_path.read_text()))
-                working_path.write_text(tomlkit.dumps(config_to_save))
+                config_to_save = tomlkit.loads(default_path.read_text(encoding='utf8'))
+                config_to_save.update(tomlkit.loads(working_path.read_text(encoding='utf8')))
+                working_path.write_text(tomlkit.dumps(config_to_save), encoding='utf8')
 
                 # write new hash
                 hash_path_default.write_text(hashlib.md5(default_path.read_bytes()).hexdigest())
@@ -136,7 +136,7 @@ def load_runtime_config(plugin: Plugin) -> TOMLDict:
         working_path.touch()
         working_path.write_bytes(default_path.read_bytes())
 
-    return dict(tomlkit.loads(working_path.read_text()))
+    return dict(tomlkit.loads(working_path.read_text(encoding='utf8')))
 
 
 ####
@@ -368,7 +368,7 @@ def load_permissions(permissions_dir: pathlib.Path, name: str) -> TOMLDict:
         permissions_file.touch()
         return {}
 
-    return dict(tomlkit.loads(permissions_file.read_text()))
+    return dict(tomlkit.loads(permissions_file.read_text(encoding='utf8')))
 
 
 def save_permissions(permissions_dir: pathlib.Path, name: str, permissions: PermissionsDict):
@@ -379,7 +379,7 @@ def save_permissions(permissions_dir: pathlib.Path, name: str, permissions: Perm
     :param permissions: Permissions dictionary to save
     """
 
-    (permissions_dir / f'{name}.toml').write_text(tomlkit.dumps(permissions))
+    (permissions_dir / f'{name}.toml').write_text(tomlkit.dumps(permissions), encoding='utf8')
 
 
 def have_permissions(user_id: int,

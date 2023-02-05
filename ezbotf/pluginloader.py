@@ -97,7 +97,7 @@ class PluginLoader:
 
         # load plugins config
         config = dict(default_config)
-        config.update(tomlkit.loads(config_path.read_text()))
+        config.update(tomlkit.loads(config_path.read_text(encoding='utf8')))
 
         # check configuration
         if not all([check_config(config, REQUIRED_DEFAULT),
