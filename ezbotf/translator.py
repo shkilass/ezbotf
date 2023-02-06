@@ -6,7 +6,7 @@ import os.path
 import tomlkit
 import pathlib
 
-from . import ezlog
+from . import ezlog, reprutil
 
 from .types import TOMLDict
 

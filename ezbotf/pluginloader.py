@@ -7,7 +7,7 @@ import tomlkit
 import importlib
 import importlib.util
 
-from . import ezlog
+from . import ezlog, reprutil
 from .context import Context
 from .plugin import PluginType, Plugin
 from .utils import check_config, load_runtime_config, get_translator_for_plugin, sort_by_priority
