@@ -160,14 +160,18 @@ class BotInstance:
 
         if version.VersionLabel.InDevelopment in version.ezbotf_labels:
             self.logger.warning('Is running on {} version', version.VersionLabel.InDevelopment)
-            self.context.notifies.append(f'{prefixes_dict["warning"]} Version **{version.ezbotf_version_string_full}** of'
-                                         ' `EzBot Framework` in the development. Some functions may behave incorrectly')
+
+            if not self.config['warnings']['ignore_dev_version']:
+                self.context.notifies.append(f'{prefixes_dict["warning"]} Version **{version.ezbotf_version_string_full}** of'
+                                              ' `EzBot Framework` in the development. Some functions may behave incorrectly')
 
         # check if current release have unstable label
         if version.VersionLabel.Unstable in version.ezbotf_labels:
             self.logger.warning('Is running on {} version. This may cause problems!', version.VersionLabel.Unstable)
-            self.context.notifies.append(f'{prefixes_dict["warning"]} Version **{version.ezbotf_version_string_full}** of'
-                                         ' `EzBot Framework` is unstable. This may cause problems!')
+
+            if not self.config['warnings']['ignore_unstable_version']:
+                self.context.notifies.append(f'{prefixes_dict["warning"]} Version **{version.ezbotf_version_string_full}** of'
+                                              ' `EzBot Framework` is unstable. This may cause problems!')
 
     ####
 
