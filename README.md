@@ -3,6 +3,11 @@
   <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" />
 </p>
 
+#### Warning
+
+Developing of the project temporarily frozen for the author private reasons.
+Also, I not recommend you to use this in status of developing. There many issues and many works!
+
 # EzBot Framework (**In the development**)
 
 [![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
