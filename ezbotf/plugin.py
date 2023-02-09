@@ -250,13 +250,15 @@ class Plugin:
                          function: PluginCommand,
                          names: list[str] | str | None = None,
                          arguments: list[Argument] | ArgumentParser | None = None,
-                         permissions: list[str | Permissions] | None = None) -> PluginCommand:
+                         permissions: list[str | Permissions] | None = None,
+                         force_permission_path: str | None = None) -> PluginCommand:
         """Registers a command. You may use :func:`command` decorator to more comfortable
 
         :param function: Function to register
         :param names: Names of the command
         :param arguments: Arguments of the command
         :param permissions: Permissions for the command
+        :param force_permission_path: Force set permission path of the command
         """
 
         # initialize names
@@ -276,7 +278,7 @@ class Plugin:
         if permissions is None:
             permissions = [Permissions.User, ]
 
-        function.permissions  = permissions + [f'{self.config["name"]}.{function.__name__}']
+        function.permissions  = permissions + ([f'{self.config["name"]}.{function.__name__}' or force_permission_path, ])
         function.parser       = arguments
         function.plugin       = self
 
@@ -332,15 +334,17 @@ class Plugin:
     def command(self,
                 names: list[str] | str | None = None,
                 arguments: list[Argument] | ArgumentParser | None = None,
-                permissions: list[str | Permissions] | None = None):
+                permissions: list[str | Permissions] | None = None,
+                force_permission_path: str | None = None):
         """Registers a command
 
         :param names: Names of the command
         :param arguments: Arguments of the command
         :param permissions: Permissions for the command
+        :param force_permission_path: Force set permission path of the command
         """
 
         def deco(func: PluginCommand) -> PluginCommand:
-            return self.register_command(func, names, arguments, permissions)
+            return self.register_command(func, names, arguments, permissions, force_permission_path)
 
         return deco
