@@ -260,8 +260,8 @@ class ArgumentParser:
                 func = self.subcommands_dict[args[2]]  # get function
 
                 # check for the ArgumentParser is using in command
-                if func.ap is not None:
-                    return await func.ap.parse([args[0]] + args[2:], event, func)
+                if func.parser is not None:
+                    return await func.parser.parse(f'{args[0]} {args[2:]}', event, func)
 
                 self.logger.info('Function {} (command: {}) doesn\'t have ArgumentParser!', func.__name__, args[2])
 
@@ -408,7 +408,7 @@ class ArgumentParser:
                                                        names,
                                                        arguments,
                                                        permissions,
-                                                       f'{self.config["name"]}.{self.main_command}.{function.__name__}')
+                                                       f'{self.parent_plugin.config["name"]}.{self.main_command}.{func.__name__}')
 
             # register aliases in the argument parser subcommands dict
             aliases = names if isinstance(names, list) else [names, ]
