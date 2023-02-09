@@ -392,7 +392,7 @@ def have_permissions(user_id: str,
     """
 
     if user_id not in permissions:
-        return Permissions.Any in command_permissions
+        return Permissions.Any in required_permissions
 
     if Permissions.Blacklisted in permissions[user_id]:
         return False
@@ -402,11 +402,11 @@ def have_permissions(user_id: str,
 
     # check the permissions for user
     for permission in permissions[user_id]:
-        if permission in command_permissions:
+        if permission in required_permissions:
             return True
 
         if isinstance(permission, int):
-            for cmd_permission in command_permissions:
+            for cmd_permission in required_permissions:
                 if not isinstance(cmd_permission, int):
                     continue
 
