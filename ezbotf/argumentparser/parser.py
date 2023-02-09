@@ -6,6 +6,9 @@ from .argumentparseerror import *
 from ..context import Context
 from .. import ezlog
 
+from ..messages import blocked as msg_blocked
+from ..permissions import Permissions
+
 from ..types import PluginCommand
 from typing import Any, TYPE_CHECKING
 
@@ -79,6 +82,7 @@ class ArgumentParser:
     :ivar position_arguments: Number of the position arguments
     :ivar default_arguments: Number of the default arguments
     :ivar stack_arguments: Number of the stack arguments
+    :ivar main_command: Name of the main command (only if subcommands feature enabled)
     """
 
     def __init__(self,
@@ -121,11 +125,15 @@ class ArgumentParser:
 
             self.position_arguments += 1
 
-        self.subcommands_dict: dict[PluginCommand] = {}
+        self.subcommands_dict: dict[PluginCommand]  = {}
+        self.main_command: str                      = (main_command_aliases[0] if isinstance(main_command_aliases, list) else main_command_aliases) \
+                                                        if main_command_aliases is not None else ''
 
         if self.subcommands:
             # create empty command by the plugin decorator
-            self.parent_plugin.command(main_command_aliases, ap=self)(self.parent_plugin.async_empty)
+            async def empty(event, _): pass
+
+            self.parent_plugin.register_command(empty, main_command_aliases, self)
 
         # check for the reply-to argument
         if len(self.arguments) > 0 and isinstance(self.arguments[0], ReplyToArgument):
@@ -318,6 +326,8 @@ class ArgumentParser:
                 # set up the type-casted reply-to message
                 setattr(output_args, arg.arg_name, result)
                 setattr(output_args, 'REPLY_TO_MESSAGE', msg)
+
+                temp_args = [result, ] + temp_args
             else:
                 if arg.default is None:
                     return ArgumentParseError.ReplyToRequired
@@ -362,24 +372,46 @@ class ArgumentParser:
 
     ####
 
-    def subcommand(self, aliases: str | list | None = None, ap=None):
+    def subcommand(self,
+                   names: list[str] | str | None = None,
+                   arguments: ... = None,
+                   permissions: list[str | Permissions] | None = None,
+                   force_permission_path: str | None = None
+                   ):
         """Decorator, that helps register the new subcommand.
            This is redirects to the `parent_plugin.command` decorator
 
-        :param aliases: Aliases to the command
-        :param ap: Argument parser
+        :param names: Names of the command
+        :param arguments: Arguments of the command
+        :param permissions: Permissions for the command
+        :param force_permission_path: Force set permission path of the command
 
-        :return: Function with the changed attributes
+        :returns: Function with the changed attributes
         """
 
-        def deco(func: PluginCommand):
-            nonlocal aliases
+        if not self.subcommands:
+            self.parent_plugin.logger.error('Cannot register subcommand. Subcommands for this argumentparser is disabled')
 
-            # register command by the plugins decorator
-            func = self.parent_plugin.command(aliases, ap, static_pname)(func)
+            def failed_deco() -> PluginCommand:
+                async def failed_command(event, _): await msg_blocked(event, 'This command is failed by ArgumentParser.'
+                                                                             ' See console logs')
+
+                return failed_command
+
+            return failed_deco
+
+        def deco(func: PluginCommand) -> PluginCommand:
+            nonlocal names
+
+            # register plugin command
+            func = self.parent_plugin.register_command(func,
+                                                       names,
+                                                       arguments,
+                                                       permissions,
+                                                       f'{self.config["name"]}.{self.main_command}.{function.__name__}')
 
             # register aliases in the argument parser subcommands dict
-            aliases = aliases if isinstance(aliases, list) else [aliases, ]
+            aliases = names if isinstance(names, list) else [names, ]
             for a in aliases:
                 self.subcommands_dict[a] = func
 
