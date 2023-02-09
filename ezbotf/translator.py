@@ -43,6 +43,8 @@ class Translator:
         self.translations: TOMLDict        = {}
         self.logger: ezlog.Logger          = ezlog.Logger('Translator', group=logger_group)
 
+        self._cache: dict[str, str] = {}
+
         self.initialize()
 
     def load_file(self, path: pathlib.Path) -> bool:
@@ -81,6 +83,47 @@ class Translator:
 
         if not self.load_language(self.desired_lang):
             self.load_language(self.default_lang)
+
+    ####
+    
+    def _get(self, path: str):
+        """Gets translation by string path (keys separated by dots).
+        This is private method (that doesn't use caching) you must use :func:`get()`
+
+        """
+        path_sep = path.split('.')  # split path by dots
+
+        value = self.translations  # last value of "for" statement
+
+        for p in path_sep:
+
+            if isinstance(value, dict) and p in value:
+                value = value[p]
+            else:
+                value = None
+                break
+
+        return value \
+            if value is not None else self.translations.get('translation_not_found',
+                                                                 'Translation not found. Contact with developer')
+
+    def get(self, path: str, force:bool = False):
+        """Gets translation by string path (keys separated by dots).
+        Also, formats translation with codes ([newline] as example)
+        Example: command.example.names
+
+        :param path: Path to the translation separated by dots
+
+        :returns: Translation, if it exits. Otherwise, "translation_not_found" key
+        """
+
+        if path in self._cache and not force:
+            return self._cache[path]
+
+        result = self._get(path)
+        self._cache[path] = result
+
+        return result
 
     ####
 
