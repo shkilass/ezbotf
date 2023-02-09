@@ -3,6 +3,10 @@
 EzBot Framework Documentation
 =============================
 
+|Issues|
+|Latest tag|
+|PyPI|
+
 Framework is designed to easily extend functional of messengers. On current moment,
 Telegram is main messenger, that framework is support. Framework have plugin system
 and easy instance management by environments.
@@ -110,3 +114,12 @@ I will publish on my github and everyone can be use this.
     framework/argumentparser/casts
     framework/argumentparser/_casts
     framework/argumentparser/argumentparseerror
+
+.. |Issues| image:: https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge
+    :target: https://github.com/ftdot/ezbotf/issues
+
+.. |Latest tag| image:: https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge
+    :target: https://github.com/ftdot/ezbotf/tags
+
+.. |PyPI| image:: https://img.shields.io/pypi/v/ezbotf?style=for-the-badge
+    :target: https://pypi.org/project/ezbotf
