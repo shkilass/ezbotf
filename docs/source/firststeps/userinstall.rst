@@ -10,7 +10,7 @@ Installation from PyPI
 ----------------------
 
 Framework is published on the PyPI and you can easily install it by one command.
-But, note, that you required to install the PyPI. Framework is support Python 3.10+
+But, note, that you required to install the PyPI. Framework is support **Python 3.11+**
 only, and in this version PyPI installed automatically, you dont have to worry about
 it.
 
@@ -25,10 +25,12 @@ If any error has been raised, open an issue there: https://github.com/ftdot/ezbo
 with labels: **installation**, **help wanted**. After, describe your problem. Also,
 for more comfort, you can add your python version, OS type & version.
 
+.. seealso:: Get more information about issues you can get :ref:`there <issuecontr>`.
+
 Manual installation
 -------------------
 
-For this way, there required to be installed: Git CLI, Python 3.10+,
+For this way, there required to be installed: **Git CLI**, **Python 3.11+**,
 
 Copy repository:
 

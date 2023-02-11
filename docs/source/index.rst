@@ -118,6 +118,12 @@ I will publish on my github and everyone can be use this.
     framework/argumentparser/_casts
     framework/argumentparser/argumentparseerror
 
+.. toctree::
+    :hidden:
+    :caption: Other
+
+    other/issuecontr
+
 .. |Issues| image:: https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge
     :target: https://github.com/ftdot/ezbotf/issues
 
