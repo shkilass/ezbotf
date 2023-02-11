@@ -261,7 +261,7 @@ class ArgumentParser:
 
                 # check for the ArgumentParser is using in command
                 if func.parser is not None:
-                    return await func.parser.parse(f'{args[0]} {args[2:]}', event, func)
+                    return await func.parser.parse(' '.join([args[0], ] + args[2:]), event, func)
 
                 self.logger.info('Function {} (command: {}) doesn\'t have ArgumentParser!', func.__name__, args[2])
 
