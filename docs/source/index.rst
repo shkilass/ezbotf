@@ -20,8 +20,11 @@ Main features
 #. Have powerful, easy in use **Argument Parser**. That have `subcommands`, `type-casting` (including ``list``, ``dict`` types) and more other features.
 #. Custom powerful, colored logging library **ezlog** (That uses **colorama**. It helps to enable the colors in Windows command line).
 #. Type-hinted as possible. If you use advanced IDE, programming process with this framework will be easy with type-hints!
+#. Uses **TOML** as configuration language
 
-.. note:: This project is using **Telethon**. There you can see it documentation: https://docs.telethon.dev/
+.. note:: This project uses **Telethon**. There you can see it documentation: https://docs.telethon.dev/
+
+.. note:: This project uses **TOML**. You can see it syntax there: https://toml.io/en/v1.0.0
 
 How I can use it?
 -----------------
