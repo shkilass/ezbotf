@@ -6,7 +6,7 @@ To get help about it, you must type in your terminal:
 """
 
 import pathlib
-import tomlkit
+import tomllib
 import sys
 
 import asyncio
@@ -35,16 +35,38 @@ __all__ = ['BotInstance']
 
 
 # required config values
-REQUIRED_DEFAULT          = ['name', 'prefixes', 'language', 'api_id', 'api_hash',
-                             'dirs', 'logging', 'warnings']
+REQUIRED_DEFAULT          = ['name', 'language', 'api_id', 'api_hash', 'dirs']
 REQUIRED_DIRS             = ['plugins_dir', 'cache_dir', 'logs_dir', 'lang_dir']
-REQUIRED_LOGGING          = ['console_log_level', 'file_log_level']
-REQUIRED_WARNINGS         = ['ignore_nonexistent_command', 'ignore_plugin_errors']
 
 REQUIRED_CONFIG = {
     'dirs': REQUIRED_DIRS,
-    'logging': REQUIRED_LOGGING,
-    'warnings': REQUIRED_WARNINGS
+}
+
+DEFAULT_CONFIG = {
+    'name':      'DefaultInstance',
+    'prefixes':  ['easy', 'ez'],
+    'language':  'en',
+    'api_id':    -1,
+    'api_hash':  '',
+    'dirs': {
+        'plugins_dir':     './plugins/',
+        'cache_dir':       './cache/',
+        'logs_dir':        './logs',
+        'lang_dir':        './lang/',
+        'permissins_dir':  './permissions/',
+    },
+    'logging': {
+        'console_log_level': 2,
+        'file_log_level': 1,
+        'time_format': '{year:04d}.{month:02d}.{day:02d}_{hour:02d}_{minute:02d}_{second:02d}.{microsecond:04s}',
+    },
+    'warnings': {
+        'ignore_nonexistent_command': True,
+        'ignore_plugin_errors':       False,
+        'ignore_disallow_access':     True,
+        'ignore_dev_version':         True,
+        'ignore_unstable_version':    False,
+    }
 }
 
 
@@ -82,11 +104,16 @@ class BotInstance:
         :raises IncorrectInstanceConfigError: When config is not have required parameters
         """
 
-        self.config = tomlkit.loads(path.read_text(encoding='utf8'))
+        self.config = tomllib.loads(path.read_text(encoding='utf8'))
 
         if not utils.check_config(self.config, REQUIRED_DEFAULT) or not utils.check_config_by_path(self.config, REQUIRED_CONFIG):
             print(f'ezbotf: Required values as default: {", ".join(REQUIRED_DEFAULT)}')
             raise IncorrectInstanceConfigError(str(path))
+
+        self.config = utils.update_default_config(
+            DEFAULT_CONFIG,
+            self.config
+        )
 
     ####
 

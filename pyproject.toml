@@ -25,7 +25,6 @@ keywords = ["telegram", "framework", "plugins", "easy"]
 dependencies = [
     "telethon",
     "colorama ~= 0.4.6",
-    "tomlkit ~= 0.11.6",
     "nest_asyncio",
     "verlib",
 ]

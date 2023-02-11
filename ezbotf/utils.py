@@ -2,10 +2,11 @@
 Some utilities (in most for plugins) of framework
 """
 
-import tomlkit
+import tomllib
 import pathlib
 import hashlib
 import verlib
+import tomli_w
 
 import sys
 import time
@@ -118,9 +119,9 @@ def load_runtime_config(plugin: Plugin) -> TOMLDict:
                 plugin.context.notifies.append(f'Config of the plugin "{plugin.config["name"]}" updated')
 
                 # update working config
-                config_to_save = tomlkit.loads(default_path.read_text(encoding='utf8'))
-                config_to_save.update(tomlkit.loads(working_path.read_text(encoding='utf8')))
-                working_path.write_text(tomlkit.dumps(config_to_save), encoding='utf8')
+                config_to_save = tomllib.loads(default_path.read_text(encoding='utf8'))
+                config_to_save.update(tomllib.loads(working_path.read_text(encoding='utf8')))
+                working_path.write_text(tomli_w.dumps(config_to_save), encoding='utf8')
 
                 # write new hash
                 hash_path_default.write_text(hashlib.md5(default_path.read_bytes()).hexdigest())
@@ -136,7 +137,7 @@ def load_runtime_config(plugin: Plugin) -> TOMLDict:
         working_path.touch()
         working_path.write_bytes(default_path.read_bytes())
 
-    return dict(tomlkit.loads(working_path.read_text(encoding='utf8')))
+    return tomllib.loads(working_path.read_text(encoding='utf8'))
 
 
 ####
@@ -365,7 +366,7 @@ def load_permissions(permissions_dir: pathlib.Path, name: str) -> TOMLDict:
         permissions_file.touch()
         return {}
 
-    return dict(tomlkit.loads(permissions_file.read_text(encoding='utf8')))
+    return tomllib.loads(permissions_file.read_text(encoding='utf8'))
 
 
 def save_permissions(permissions_dir: pathlib.Path, name: str, permissions: PermissionsDict):
@@ -376,7 +377,7 @@ def save_permissions(permissions_dir: pathlib.Path, name: str, permissions: Perm
     :param permissions: Permissions dictionary to save
     """
 
-    (permissions_dir / f'{name}.toml').write_text(tomlkit.dumps(permissions), encoding='utf8')
+    (permissions_dir / f'{name}.toml').write_text(tomli_w.dumps(permissions), encoding='utf8')
 
 
 def have_permissions(user_id: str,
@@ -414,3 +415,32 @@ def have_permissions(user_id: str,
                     return True
 
     return False
+
+####
+
+
+def update_default_config(dict1: dict, dict2: dict):
+    """Updates first dict (with subdictionaries) with second dictionary.
+    Note, that keys from dict2 that doesn't exist in dict1 will be skipped!
+
+    :param dict1: First dictionary to update
+    :param dict2: Second dictionary
+
+    :returns: New dictionary with updated keys of dict1 by dict2
+    """
+
+    new_dict = dict(dict1)
+    new_dict.update(dict2)
+
+    for k, v in dict1.items():
+
+        if isinstance(v, dict) and k in dict2:
+            new_dict[k] = update_default_config(dict1[k], dict2[k])
+
+    return new_dict
+
+#########################################
+#
+# TODO: tomllib - tomli-w system refactor
+#
+#########################################

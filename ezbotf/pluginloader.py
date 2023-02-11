@@ -3,14 +3,14 @@ Contains all to load plugins. The most useful thing is PluginLoader.
 """
 
 import pathlib
-import tomlkit
+import tomllib
 import importlib
 import importlib.util
 
 from . import ezlog, reprutil
 from .context import Context
 from .plugin import PluginType, Plugin
-from .utils import check_config, load_runtime_config, get_translator_for_plugin, sort_by_priority
+from .utils import check_config, load_runtime_config, get_translator_for_plugin, sort_by_priority, update_default_config
 
 from .types import PluginCommand
 
@@ -19,21 +19,40 @@ from typing import Callable
 __all__ = ['PluginLoader', 'PluginManageFunction']
 
 # required values for the plugins config
-REQUIRED_DEFAULT       = ['name', 'version', 'author', 'description', 'full_description',
-                          'executable', 'lang']
-REQUIRED_EXECUTABLE    = ['main_file', 'main_class']
-REQUIRED_LANG          = ['default', 'langs']
+REQUIRED_DEFAULT       = ['name', 'version', 'author', 'description', 'full_description']
 
 # default config of the plugins
 default_config = {
-    'priority': 99,
-    'requirements': {
-        'file': 'requirements.txt',
-        'framework': [],
-        'plugins': []
+    # main sector
+    'name':              '-',
+    'version':           '-',
+    'author':            '-',
+    'description':       '-',
+    'full_description':  '-',
+    'priority':          99,
+
+    # [executable] sector
+    'executable': {
+        'main_file':   'main.py',
+        'main_class':  'plugin',
     },
+
+    # [lang] sector
+    'lang': {
+        'default':  'en',
+        'langs':    ['en'],
+    },
+
+    # [requirements] sector
+    'requirements': {
+        'file':       'requirements.txt',
+        'framework':  [],
+        'plugins':    [],
+    },
+
+    # [debug] sector
     'debug': {
-        'indev': False
+        'indev': False,
     }
 }
 
@@ -95,20 +114,19 @@ class PluginLoader:
         :returns: :class:`Plugin` if it successfully loaded and initialized, otherwise None will be returned
         """
 
-        # load plugins config
-        config = dict(default_config)
-        config.update(tomlkit.loads(config_path.read_text(encoding='utf8')))
+        # load plugin config
+        config = tomllib.loads(config_path.read_text(encoding='utf8'))
 
         # check configuration
-        if not all([check_config(config, REQUIRED_DEFAULT),
-                    check_config(config['executable'], REQUIRED_EXECUTABLE),
-                    check_config(config['lang'], REQUIRED_LANG)
-                    ]):
+        if not check_config(config, REQUIRED_DEFAULT):
             self.logger.error('Plugin by path {} missing some required config fields', str(plugin_dir))
             self.logger.debug('Required fields: {}', REQUIRED_DEFAULT)
-            self.logger.debug('Required fields for "executable": {}', REQUIRED_EXECUTABLE)
-            self.logger.debug('Required fields for "lang": {}', REQUIRED_LANG)
             return
+
+        config = update_default_config(
+            default_config,
+            config
+        )
 
         executable = plugin_dir / config['executable']['main_file']
 

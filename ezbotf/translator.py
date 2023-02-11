@@ -3,7 +3,7 @@ Here is defined only :class:`Translator` class that helps with the translations 
 """
 
 import os.path
-import tomlkit
+import tomllib
 import pathlib
 
 from . import ezlog, reprutil
@@ -62,7 +62,7 @@ class Translator:
             self.logger.debug('Path doesn\'t exists. Can\'t load the translations')
             return False
 
-        self.translations = tomlkit.loads(path.read_text(encoding='utf8'))
+        self.translations = tomllib.loads(path.read_text(encoding='utf8'))
 
         return True
 
@@ -107,7 +107,7 @@ class Translator:
             if value is not None else self.translations.get('translation_not_found',
                                                                  'Translation not found. Contact with developer')
 
-    def get(self, path: str, force:bool = False):
+    def get(self, path: str, force: bool = False):
         """Gets translation by string path (keys separated by dots).
         Also, formats translation with codes ([newline] as example)
         Example: command.example.names
