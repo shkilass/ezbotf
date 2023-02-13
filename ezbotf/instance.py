@@ -18,7 +18,7 @@ from telethon.events.raw import EventBuilder
 from datetime import datetime
 
 from . import ezlog, utils, messages, version, reprutil
-from .argumentparser import ArgumentParseError
+from .argumentparser import ArgumentParseError, Cast
 from .pluginloader import PluginLoader
 from .instancecontext import InstanceContext, DirsContext
 from .exceptions import IncorrectInstanceConfigError
@@ -169,7 +169,11 @@ class BotInstance:
 
         # add prefixes from translation
         if 'prefixes' in self.translator.translations:
-            self.prefixes += self.translator.translations['prefixes']
+            self.prefixes += self.translator.get('prefixes')
+
+        # set true\false translations for bool cast
+        Cast.setup_bool_cast_translations(self.translator.get('bool_true_list'),
+                                          self.translator.get('bool_false_list'))
 
         # add prefixes from config
         self.prefixes += self.config['prefixes']

@@ -13,7 +13,7 @@ logs_dir        = './logs'
 lang_dir        = './lang/'
 permissins_dir  = './permissions/'
 
-[logging]
+# [logging]
 # Log levels:
 #    DEBUG      = 1
 #    EXCEPTION  = 2
