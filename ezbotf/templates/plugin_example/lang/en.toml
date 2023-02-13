@@ -1,0 +1,3 @@
+
+[command.hello]
+names = ['hello-{{__NAME__}}', 'h-{{__NAME__}}']
