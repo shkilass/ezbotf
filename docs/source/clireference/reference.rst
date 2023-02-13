@@ -39,7 +39,7 @@ Example:
 ``-r (NAME)``, ``--run (NAME)`` - Runs instance by it name.
 
 ``-s (NAME)``, ``--setup (NAME)`` - Set ups credentials for instance by it name. Requires:
-**--api-id**, **--api-hash** arguments
+**--api-id**, **--api-hash** parameters
 
 ``--api-id (API ID)`` - Telegram API ID for **--setup**
 
@@ -52,7 +52,7 @@ Subcommand: plugin
 
 ``-h``, ``--help`` - Shows help message about this subcommand.
 
-``-i (NAME)``, ``--instance (NAME)`` - Instance with that work. Required for all arguments
+``-i (NAME)``, ``--instance (NAME)`` - Instance with that work. Required for all parameters in ``plugin`` subcommands
 
 ``-n (NAME)``, ``--new-plugin (NAME)`` - Creates new plugin.
 
