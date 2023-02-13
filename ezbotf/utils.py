@@ -332,7 +332,7 @@ def sort_by_priority(plugins: list[Plugin]) -> list[Plugin]:
         plugins_dict[pr].append(p)
 
     for pr in plugins_dict:
-        plugins_dict[pr] = sorted(plugins_dict[pr])
+        plugins_dict[pr] = sorted(plugins_dict[pr], key=lambda p: p.config['name'])
 
     sorted_plugins_dict = {}
 
