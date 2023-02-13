@@ -1,0 +1,36 @@
+
+name      = 'DefaultInstance'
+prefixes  = ['ez']
+language  = 'en'
+
+api_id    = -1
+api_hash  = ''
+
+[dirs]
+plugins_dir     = './plugins/'
+cache_dir       = './cache/'
+logs_dir        = './logs'
+lang_dir        = './lang/'
+permissins_dir  = './permissions/'
+
+[logging]
+# Log levels:
+#    DEBUG      = 1
+#    EXCEPTION  = 2
+#    INFO       = 5
+#    WARNING    = 10
+#    ERROR      = 15
+#    CRITICAL   = 20
+
+# console_log_level  = 2  # EXCEPTION
+# file_log_level     = 1  # DEBUG
+
+# format of the time for name of the log file
+# time_format = '{year:04d}.{month:02d}.{day:02d}_{hour:02d}_{minute:02d}_{second:02d}.{microsecond:04s}'
+
+# [warnings]
+# ignore_nonexistent_command  = true   # if it is false, then sends callback about nonexistent command, otherwise do nothing
+# ignore_plugin_errors        = false  # if it is false, then ezbotf will show notify about the plugin errors, otherwise do nothing
+# ignore_disallow_access      = true   # if it is false, then all disallowed access attempts will be replied to the chat
+# ignore_dev_version          = true   # ignore warning about in-development version?
+# ignore_unstable_version     = false  # ignore warning about unstable version?

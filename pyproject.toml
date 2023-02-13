@@ -27,6 +27,7 @@ dependencies = [
     "colorama ~= 0.4.6",
     "nest_asyncio",
     "verlib",
+    "tomli-w"
 ]
 requires-python = ">=3.10"
 
