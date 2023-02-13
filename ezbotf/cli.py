@@ -257,6 +257,7 @@ def install_plugin(path: pathlib.Path, instance_name: str):
 
 ####
 
+
 def check_version():
     """Checks if current running version of python is equals or above 3.11"""
 
@@ -272,59 +273,61 @@ def main():
 
     check_version()
 
-    parser = argparse.ArgumentParser(description='Helps with EzBot Framework management')
+    parser = argparse.ArgumentParser(description='help with EzBot Framework management')
 
     parser.add_argument('--version', action='version',
                         version='%(prog)s ' + ezbotf.version.ezbotf_version_string_full,
-                        help='Shows program version')
+                        help='show program version')
     parser.add_argument('--author', action='version',
                         version='ftdot (https://github.com/ftdot)',
-                        help='Shows author of program')
-    parser.add_argument('-v', '--verbose', action='store_true',
-                        help='Shows additional information')
+                        help='show author of program')
 
     parser.add_argument('-i', '--initialize',
                         metavar='FOLDER NAME',
-                        help='Initializes new ezbotf environment in the given folder name')
+                        help='initialize new environment in the given folder name')
 
     subparsers = parser.add_subparsers(help='Subcommands for ')
 
     # instance management
     instance_parser = subparsers.add_parser('instance',
-                                            help='Manipulate with the instances & environments')
+                                            help='Manipulate instances')
     instance_parser.add_argument('-n', '--new-instance',
                                  metavar='NAME',
-                                 help='Creates new instance in the current ezbotf environment')
+                                 help='create new instance in current ezbotf environment')
     instance_parser.add_argument('-r', '--run',
                                  metavar='NAME',
-                                 help='Runs instance by its name')
+                                 help='run instance by it name')
 
     instance_parser.add_argument('-s', '--setup',
                                  metavar='NAME',
-                                 help='Setups instance by its name. Requires: --api-id, --api-hash')
+                                 help='setup instance by it name. Requires: --api-id, --api-hash')
     instance_parser.add_argument('--api-id',
                                  type=int,
-                                 help='Telegram API ID parameter for the --setup argument')
+                                 help='telegram API ID parameter for the --setup parameter')
     instance_parser.add_argument('--api-hash',
-                                 help='Telegram API HASH parameter for the --setup argument')
+                                 help='telegram API HASH parameter for the --setup parameter')
 
     # plugin management
     plugin_parser = subparsers.add_parser('plugin',
                                           help='Plugins management in the current instance')
     plugin_parser.add_argument('-i', '--instance',
-                               help='Instance with that manipulate')
+                               help='instance with that manipulate. Required for all parameters')
     plugin_parser.add_argument('-n', '--new-plugin',
                                metavar='NAME',
-                               help='Creates new plugin')
+                               help='create new plugin')
     plugin_parser.add_argument('-r', '--remove-plugin',
                                metavar='NAME',
-                               help='Removes a plugin with giblets')
+                               help='remove plugin with giblets')
     plugin_parser.add_argument('-c', '--compile-plugin',
                                metavar='NAME',
-                               help='Compiles a plugin to .zip (DO NOT FORGET BACKUP YOUR CODE!)')
+                               help='compile plugin to .zip (DO NOT FORGET BACKUP YOUR CODE!)')
     plugin_parser.add_argument('-I', '--install-plugin',
                                metavar='PATH',
-                               help='Installs plugin to an instance')
+                               help='install plugin to the instance')
+    plugin_parser.add_argument('--empty',
+                               action='store_true',
+                               default=False,
+                               help='(use only with --new-plugin param) create empty plugin')
 
     args = parser.parse_args()
     args_ = dir(args)
@@ -339,7 +342,7 @@ def main():
         if not (args.api_id and args.api_hash):
             instance_parser.print_help()
 
-            print('--api-id, --api-hash arguments is required!')
+            print('--api-id, --api-hash parameters is required!')
             exit()
 
         setup_instance(args.setup, args.api_id, args.api_hash)
@@ -351,7 +354,7 @@ def main():
         if not args.instance:
             plugin_parser.print_help()
 
-            print('-i, --instance argument is required!')
+            print('-i, --instance parameter is required!')
             exit()
 
         new_plugin(args.new_plugin, args.instance)
@@ -360,7 +363,7 @@ def main():
         if not args.instance:
             plugin_parser.print_help()
 
-            print('-i, --instance argument is required!')
+            print('-i, --instance parameter is required!')
             exit()
 
         remove_plugin(args.remove_plugin, args.instance)
@@ -369,7 +372,7 @@ def main():
         if not args.instance:
             plugin_parser.print_help()
 
-            print('-i, --instance argument is required!')
+            print('-i, --instance parameter is required!')
             exit()
 
         compile_plugin(args.compile_plugin, args.instance)
@@ -378,10 +381,10 @@ def main():
         if not args.instance:
             plugin_parser.print_help()
 
-            print('-i, --instance argument is required!')
+            print('-i, --instance parameter is required!')
             exit()
 
-        install_plugin(pathlib.Path(args.install_plugin), args.instance)
+        install_plugin(pathlib.Path(args.install_plugin), args.instance, args.empty)
 
     else:
         parser.print_help()
