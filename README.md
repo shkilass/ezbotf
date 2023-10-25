@@ -3,17 +3,18 @@
   <img src="https://github.com/ftdot/ezbotf/blob/master/banner.png" width="256" />
 </p>
 
-#### Warning
+> **Warning**
+>
+> Development of the project frozen for the author private reasons. It is possible that the
+> development of the project will never be continued. Also, I not recommend you to use this
+> in status of developing. There many issues and many works!
 
-Developing of the project temporarily frozen for the author private reasons.
-Also, I not recommend you to use this in status of developing. There many issues and many works!
-
-# EzBot Framework (**In the development**)
+# EzBot Framework (**frozen**)
 
 [![Documentation](https://img.shields.io/readthedocs/ezbot-framework?style=for-the-badge)](https://ezbot-framework.readthedocs.io)
 [![Issues](https://img.shields.io/github/issues/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/issues)
 [![Latest tag](https://img.shields.io/github/v/tag/ftdot/ezbotf?style=for-the-badge)](https://github.com/ftdot/ezbotf/tags)
-[![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](https://pypi.org/project/ezbotf/)
+<!-- [![PyPI](https://img.shields.io/pypi/v/ezbotf?style=for-the-badge)](#) -->
 
 This is a beautiful userbot framework for messangers that uses plugin system and have cool features, such as:
 - Configurations (Your plugin may have config, such as "browser-to-use". Users of your plugin can change it)
@@ -24,7 +25,11 @@ This is a beautiful userbot framework for messangers that uses plugin system and
 Currently, framework in the development. This is may cause some bugs or incorrect work of some functions, grammatical errors, undocumented things and other.
 If you found any of this, describe it [there](https://github.com/ftdot/ezbotf/issues).
 
-See more [on the documentation page](#)
+> **Note**
+>
+> Now framework works only with Telegram.
+
+See more [on this documentation page](https://ezbot-framework.readthedocs.io/en/latest/index.html)
 
 
 ## Contents
@@ -239,8 +244,7 @@ Build **HTML** docs via **Make**:
 make html
 ```
 
-<!--
-## **EzzBot** - Better Place For Users
+<!-- ## **EzzBot** - Better Place For Users -->
 
 **EzzBot** - Is an application-overlay of the EzBot Framework for all platforms (including **Android**) with the GUI and some cool features.
 I recommend to use it if you are is user.
